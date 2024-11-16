@@ -1,0 +1,17 @@
+/* Styles for TMTM Exchange */
+.gradient-bg {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+}
+.card-hover {
+    transition: transform 0.2s;
+}
+.card-hover:hover {
+    transform: translateY(-5px);
+}
+.rate-card {
+    animation: fadeIn 0.5s ease-in;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

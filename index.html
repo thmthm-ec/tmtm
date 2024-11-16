@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMTM Exchange - Live Currency Exchange</title>
+    <meta name="description" content="TMTM Exchange offers real-time currency exchange rates and conversion services.">
+    <meta name="keywords" content="currency exchange, real-time rates, USD, DZD, VND">
+    <meta name="author" content="TMTM Exchange">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg fixed w-full z-10">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold">TMTM Exchange</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-blue-200">Home</a>
+                    <a href="#rates" class="hover:text-blue-200">Exchange Rates</a>
+                    <a href="#calculator" class="hover:text-blue-200">Calculator</a>
+                    <a href="about.html" class="hover:text-blue-200">About Us</a>
+                    <a href="services.html" class="hover:text-blue-200">Services</a>
+                    <a href="contact.html" class="hover:text-blue-200">Contact</a>
+                    <a href="blog.html" class="hover:text-blue-200">Blog</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2">
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4">
+                        Real-Time Currency Exchange
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8">
+                        Get live exchange rates for USD, DZD, and VND with automatic updates every minute.
+                    </p>
+                    <a href="#calculator" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                        Convert Currency Now
+                    </a>
+                </div>
+                <div class="md:w-1/2 mt-10 md:mt-0">
+                    <img src="/api/placeholder/600/400" alt="Currency Exchange Illustration" class="rounded-lg shadow-xl lazyload">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exchange Rates Section -->
+    <section id="rates" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Live Exchange Rates</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- DZD Rate Card -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover rate-card">
+                    <h3 class="text-xl font-bold mb-4">USD/DZD</h3>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <p class="text-gray-600">Buy Rate</p>
+                            <p id="dzd-buy" class="text-2xl font-bold text-blue-600">Loading...</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-600">Sell Rate</p>
+                            <p id="dzd-sell" class="text-2xl font-bold text-green-600">Loading...</p>
+                        </div>
+                    </div>
+                    <p id="dzd-last-update" class="text-sm text-gray-500">Updating...</p>
+                </div>
+
+                <!-- VND Rate Card -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover rate-card">
+                    <h3 class="text-xl font-bold mb-4">USD/VND</h3>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <p class="text-gray-600">Buy Rate</p>
+                            <p id="vnd-buy" class="text-2xl font-bold text-blue-600">Loading...</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-600">Sell Rate</p>
+                            <p id="vnd-sell" class="text-2xl font-bold text-green-600">Loading...</p>
+                        </div>
+                    </div>
+                    <p id="vnd-last-update" class="text-sm text-gray-500">Updating...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Currency Calculator</h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-gray-50 rounded-lg shadow-lg p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-gray-700 mb-2">From Currency</label>
+                            <select id="from-currency" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <option value="USD">USD - US Dollar</option>
+                                <option value="DZD">DZD - Algerian Dinar</option>
+                                <option value="VND">VND - Vietnamese Dong</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">To Currency</label>
+                            <select id="to-currency" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <option value="DZD">DZD - Algerian Dinar</option>
+                                <option value="USD">USD - US Dollar</option>
+                                <option value="VND">VND - Vietnamese Dong</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-2">Amount</label>
+                        <input type="number" id="amount" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Enter amount">
+                    </div>
+                    <button id="calculate-btn" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                        Calculate
+                    </button>
+                    <div id="conversion-result" class="mt-6 text-center text-xl font-semibold text-gray-800"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Contact Us</h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <form id="contact-form">
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2">Name</label>
+                            <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2">Message</label>
+                            <textarea class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About Us</h3>
+                    <p class="text-blue-100">TMTM Exchange provides secure and fast currency exchange services worldwide.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-blue-100 hover:text-white">Home</a></li>
+                        <li><a href="#rates" class="text-blue-100 hover:text-white">Exchange Rates</a></li>
+                        <li><a href="#calculator" class="text-blue-100 hover:text-white">Calculator</a></li>
+                        <li><a href="#contact" class="text-blue-100 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-blue-100">
+                        <li>Email: info@tmtm.exchange</li>
+                        <li>Phone: +1 234 567 890</li>
+                        <li>Address: 123 Exchange St, City</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-blue-100 hover:text-white">Twitter</a>
+                        <a href="#" class="text-blue-100 hover:text-white">Facebook</a>
+                        <a href="#" class="text-blue-100 hover:text-white">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-8 pt-8 text-center text-blue-100">
+                2024 TMTM Exchange. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
